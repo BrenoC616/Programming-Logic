@@ -1,0 +1,171 @@
+Algoritmo "semnome"
+
+
+Var
+   passW, menu, menuOp, n, back_exit, sU:inteiro
+   prodt:vetor [1..5] de real
+   valorPedido, valorDinheiro, valorResto:real
+
+Inicio
+
+   prodt[1] <- 24.90
+   prodt[2] <- 9.09
+   prodt[3] <- 2.90
+   prodt[4] <- 2.50
+   prodt[5] <- 3.20
+
+
+
+      se passW = 0 entao
+         escreval("Sistema ABC")
+         escreval("")
+         escreva("Digite a Senha para iniciar o Sistema: ")
+         leia(passW)
+
+         sU <- passW
+         
+      fimse
+      
+      limpatela
+
+      se sU = 13579 entao
+         enquanto menu = 0 faca
+
+            sU <- 1
+
+            se passW = 13579 entao
+               escreval("Menu S.U.")
+               escreval("")
+               escreval("[1] - Exibir Lista de Produtos")
+               escreval("[2] - Mudar Preços")
+               escreva("Digite o numero [n] da opção para acessa-la: ")
+               leia(menuOp)
+
+
+
+               se menuOp = 1 entao
+                  escreval("Lista de Produtos")
+                  escreval("")
+                  escreval("[1] – Arroz 5Kg – 1 unidades – R$", prodt[1])
+                  escreval("[2] – Feijão 1Kg - 1 unidades – R$", prodt[2])
+                  escreval("[3] – Batata Un. – 1 unidades – R$", prodt[3])
+                  escreval("[4] – Tomate Un. – 1 unidades – R$", prodt[4])
+                  escreval("[5] – Cebola Un. – 1 unidades – R$", prodt[5])
+                  escreval("")
+                  se back_exit = 0 entao
+                     escreva("Para voltar ao Menu de Opções. Digite [0]: ")
+                     leia(back_exit)
+                     passW <- 13579
+                     menuOp <- 0
+                  fimse
+
+               fimse
+
+               se menuOp = 2 entao
+                  escreva("Digite o numero [n] do Produto que deseja mudar o Preço: ")
+                  leia(n)
+                  escreval("")
+
+                  se (n <= 5) e (n > 0) entao
+                     escreva("Digite o novo preço: R$ ")
+                     leia(prodt[n])
+                     escreval("")
+                     escreva("Para Sair do Menu S.U.. Digite [0]: ")
+                     leia(sU)
+
+                     se sU = 0 entao
+                        menu <- 1
+                        passW <- 0
+                        sU <- 0
+
+                        limpatela
+
+                     fimse
+
+                  fimse
+
+               fimse
+
+            fimse
+
+         fimenquanto
+
+      fimse
+
+
+
+   limpatela
+
+   se passW = 1234 entao
+
+      enquanto menu = 1 faca
+         escreval("Menu de Opções")
+         escreval("")
+         escreval("[1] – Lista de produtos")
+         escreval("[2] – Valor do pedido")
+         escreval("[3] – Finalizar pedido")
+         escreval("")
+         escreva("Digite o numero [n] da opção para acessa-la: ")
+         leia(menuOp)
+
+         limpatela
+
+         se menuOp = 1 entao
+            escreval("Lista de Produtos")
+            escreval("")
+            escreval("[1] – Arroz 5Kg – 1 unidades – R$", prodt[1])
+            escreval("[2] – Feijão 1Kg - 1 unidades – R$", prodt[2])
+            escreval("[3] – Batata Un. – 1 unidades – R$", prodt[3])
+            escreval("[4] – Tomate Un. – 1 unidades – R$", prodt[4])
+            escreval("[5] – Cebola Un. – 1 unidades – R$", prodt[5])
+            escreval("")
+            escreva("Digite o numero [n] do produto para adiciona-lo no Pedido: ")
+            leia(n)
+
+            valorPedido <- valorPedido + prodt[n]
+
+         fimse
+
+         se menuOp = 2 entao
+            escreval("Valor do Pedido: R$", valorPedido)
+
+            se back_exit = 0 entao
+               escreval("")
+               escreva("Para voltar ao Menu de Opções. Digite [1]: ")
+               leia(back_exit)
+
+            fimse
+
+            back_exit <- 0
+
+         fimse
+
+         se menuOp = 3 entao
+            escreval("Valor do Pedido: R$", valorPedido)
+            escreva("Valor do Pagamento: R$ ")
+            leia(valorDinheiro)
+            escreval("")
+
+            valorResto <- valorDinheiro - valorPedido
+
+            escreval("Valor de troco: R$", valorResto)
+
+            se back_exit = 0 entao
+               escreval("")
+               escreva("Para finalizar o Sistema. Digite [4]: ")
+               leia(back_exit)
+
+            fimse
+
+            menu <- 0
+
+         fimse
+
+         limpatela
+
+      fimenquanto
+
+   fimse
+
+
+Fimalgoritmo
